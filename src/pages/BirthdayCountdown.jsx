@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import FotoCount from "../assets/images/foto-birthday.jpg";
+import VidioCount from "../assets/videos/birthday-wish.mp4";
 
 const BirthdayCountdown = ({ isIOS }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -63,17 +63,23 @@ const BirthdayCountdown = ({ isIOS }) => {
       >
         <h1 className="text-4xl md:text-5xl font-bold text-pink-600 mb-8">
           The Birthday of{" "}
-          <span className="text-purple-600">Friven Revano</span>
+          <span className="text-purple-600">Jalaa</span>
         </h1>
 
-        <div className="mb-8">
-  <img
-    src={FotoCount}
-    alt="Birthday"
-    className="w-full max-w-md mx-auto rounded-lg shadow-xl object-cover"
-    style={{ transform: "translateZ(0)" }}
-  />
-</div>
+         <div className="mb-8">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    webkit-playsinline="true"
+                    x-webkit-airplay="allow"
+                    className="w-full max-w-md mx-auto rounded-lg shadow-xl"
+                    style={{ transform: "translateZ(0)" }}
+                  >
+                    <source src={VidioCount} type="video/mp4" />
+                  </video>
+                </div>
 
         <div className="mb-12">
           <h2 className="text-2xl text-pink-600 mb-4">Menuju Hari Spesialmu</h2>
@@ -103,10 +109,10 @@ const BirthdayCountdown = ({ isIOS }) => {
 
         <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-pink-100">
           <h3 className="text-xl font-semibold text-purple-600 mb-2">
-            📅 23 Mei 2026
+            📅 23 Juni 2026
           </h3>
           <p className="text-pink-600">
-             tanggal dimana kamu jadi alasan banyak orang tersenyum, termasuk akuu
+             23 Juni 2026 taun dimana aku kenal jala di usia 27 th ini
           </p>
         </div>
 

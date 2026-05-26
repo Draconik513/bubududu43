@@ -15,7 +15,7 @@ const Memories = ({ isIOS }) => {
         className="max-w-5xl w-full text-center"
       >
         <h1 className="text-4xl font-bold text-pink-600 mb-8">
-          Gantengnya Akuu
+          Our Special Memories
         </h1>
 
         <motion.div whileHover={{ scale: isIOS ? 1 : 1.02 }} className="mb-8">
@@ -46,7 +46,7 @@ const Memories = ({ isIOS }) => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.6 }}
   >
-   maaf yaa sayangg klo akuu blm bisaa ngasih yg terbaik buat kmuu, maaf klo aku egois, suka marah marah dan pengen diperhatiin trs sma kamuu, tpi aslinya aku sayang bgt sma kamu dan pgn ketemuu kamuu, smogaa kmuu bahagia sma aku yaa gantengkuu, i love you duniakuu❤️
+  Maaf yaa sayang  aku gak ada disitu pas kamu buka kadonya nanti video kan yaa pas buka kadonya atau bisa vc sama aku 🥰 jangan lupa kirim alamatnya jugaa
   </motion.p>
   
 </div>
