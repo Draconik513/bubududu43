@@ -1,11 +1,13 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import ConfettiBackground from "../components/ConfettiBackground";
 import FloatingHearts from "../components/FloatingHearts";
-import heartVideo from "../assets/videos/heart-animation.mp4";
+import fotoku from "../assets/images/fotoku.jpeg";
 
 const HomePage = ({ isIOS }) => {
   const navigate = useNavigate();
+  const [showPhoto, setShowPhoto] = useState(false);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -19,9 +21,9 @@ const HomePage = ({ isIOS }) => {
           transition={{ delay: 0.5 }}
           className="mb-8"
         >
-          <p className="text-lg text-pink-600 pt-4">Untuk yang tersayang</p>
+          <p className="text-lg text-pink-600 pt-4">Yang tersayang</p>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-600 via-pink-400 to-purple-500 text-transparent bg-clip-text drop-shadow-md">
-            Jalaa
+            Jalaa🤍
           </h1>
         </motion.div>
 
@@ -36,18 +38,11 @@ const HomePage = ({ isIOS }) => {
           }}
           className="mb-8"
         >
-          <div className="w-64 h-64 mx-auto rounded-full border-4 border-pink-300 shadow-lg overflow-hidden">
-            <video
-              src={heartVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              webkit-playsinline="true"
-              x-webkit-airplay="allow"
-              className="w-full h-full object-cover"
-              style={{ transform: "translateZ(0)" }}
-            />
+          <div
+            className="w-64 h-64 mx-auto rounded-full border-4 border-pink-300 shadow-lg overflow-hidden cursor-pointer"
+            onClick={() => setShowPhoto(true)}
+          >
+            <img src={fotoku} alt="Foto" className="w-full h-full object-cover" />
           </div>
         </motion.div>
 
@@ -90,6 +85,45 @@ const HomePage = ({ isIOS }) => {
           </motion.button>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {showPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            onClick={() => setShowPhoto(false)}
+          >
+            {/* blur kiri kanan */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <div
+              className="absolute left-0 top-0 h-full w-1/4 backdrop-blur-md bg-black/30"
+              style={{ backdropFilter: "blur(12px)" }}
+            />
+            <div
+              className="absolute right-0 top-0 h-full w-1/4 backdrop-blur-md bg-black/30"
+              style={{ backdropFilter: "blur(12px)" }}
+            />
+
+            <motion.img
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              src={fotoku}
+              alt="Foto"
+              className="relative z-10 max-h-screen w-auto object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <button
+              className="absolute top-4 right-4 z-20 text-white text-3xl font-bold"
+              onClick={() => setShowPhoto(false)}
+            >
+              ✕
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const SpecialWishes = ({ isIOS }) => {
 
   const wishes = `
 Boleh yaaa, aku merayakan hari spesial mu ini lewat tulisan ini?
-katanyaa makin dewasa, ulang tahun bukan lagi seberapa ramai pesta, tapi siapaaa yg tetap tinggal saat dunia lagi gak baik baik ajaaa 🥺....
+katanya makin dewasa, ulang tahun bukan lagi seberapa ramai pesta, tapi siapaaa yg tetap tinggal saat dunia lagi gak baik baik ajaaa 🥺....
 dan lewaatt moment ini aku mau jadi orang yang tetep tinggal pas kamu lagi baik baik aja atau gak lagi baik baik ajaaa semogaa terus begitu....
 Isi tulisannn ini gak lebih dari sekedar harapan dan doa...
 Makasih yaaaa udaah izinin aku kenal kamu lebih deket dan jadi bagian ceritamu di sepanjang taun ini....
@@ -61,7 +61,7 @@ Semogaa di usia inii Jalaa tangki cintanya terisi penuh, duniamu terasaa lebih t
             className="relative overflow-hidden bg-pink-500 text-white px-6 py-3 rounded-full shadow-lg"
           >
             <span className="button-text">
-              {showHeart ? "Sembunyikan Cintaku" : "Lihat Cintaku"}
+              {showHeart ? "Sembunyikan" : "Pacarmu😙"}
             </span>
           </motion.button>
         </div>

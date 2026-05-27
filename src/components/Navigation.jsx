@@ -10,15 +10,15 @@ const Navigation = () => {
         transition={{ type: 'spring', stiffness: 300 }}
         className="flex bg-white bg-opacity-80 backdrop-blur-md rounded-full shadow-lg p-2 pointer-events-auto"
       >
-        {['/', '/countdown', '/wishes', '/memories'].map((path, i) => (
+        {['/countdown', '/home', '/wishes', '/memories'].map((path, i) => (
           <Link 
             key={i} 
             to={path}
             className="mx-2 p-2 rounded-full hover:bg-pink-100 transition-colors"
           >
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              {path === '/' ? '🏠' : 
-               path === '/countdown' ? '⏳' : 
+              {path === '/countdown' ? '⏳' : 
+               path === '/home' ? '🏠' : 
                path === '/wishes' ? '💌' : '📸'}
             </motion.div>
           </Link>

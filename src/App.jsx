@@ -119,7 +119,7 @@
 
 // export default App
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BirthdayCountdown from "./pages/BirthdayCountdown";
 import SpecialWishes from "./pages/SpecialWishes";
@@ -130,6 +130,8 @@ import ReplyPage from "./pages/ReplyPage";
 import Navigation from "./components/Navigation";
 import PageTransition from "./components/PageTransition";
 import BackgroundMusic from "./components/BackgroundMusic";
+import PasswordPage from "./pages/PasswordPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [countdownFinished, setCountdownFinished] = useState(false);
@@ -162,68 +164,23 @@ function App() {
         className={`min-h-screen font-sans pb-24 ${isIOS ? "ios-device" : ""}`}
       >
         <BackgroundMusic />
-        <Navigation />
+        <NavigationWrapper />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <PageTransition>
-                <HomePage isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/countdown"
-            element={
-              <PageTransition>
-                <BirthdayCountdown isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/wishes"
-            element={
-              <PageTransition>
-                <SpecialWishes isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/memories"
-            element={
-              <PageTransition>
-                <Memories isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/gift"
-            element={
-              <PageTransition>
-                <GiftWrapper isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/reply"
-            element={
-              <PageTransition>
-                <ReplyPage isIOS={isIOS} />
-              </PageTransition>
-            }
-          />
+          <Route path="/" element={<PasswordPage isIOS={isIOS} />} />
+          <Route path="/home" element={<ProtectedRoute><PageTransition><HomePage isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
+          <Route path="/countdown" element={<ProtectedRoute><PageTransition><BirthdayCountdown isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
+          <Route path="/wishes" element={<ProtectedRoute><PageTransition><SpecialWishes isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
+          <Route path="/memories" element={<ProtectedRoute><PageTransition><Memories isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
+          <Route path="/gift" element={<ProtectedRoute><PageTransition><GiftWrapper isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
+          <Route path="/reply" element={<ProtectedRoute><PageTransition><ReplyPage isIOS={isIOS} /></PageTransition></ProtectedRoute>} />
           <Route
             path="/celebration"
             element={
-              countdownFinished ? (
+              <ProtectedRoute>
                 <PageTransition>
-                  <CakeCelebration isIOS={isIOS} />
+                  {countdownFinished ? <CakeCelebration isIOS={isIOS} /> : <BirthdayCountdown isIOS={isIOS} />}
                 </PageTransition>
-              ) : (
-                <PageTransition>
-                  <BirthdayCountdown isIOS={isIOS} />
-                </PageTransition>
-              )
+              </ProtectedRoute>
             }
           />
         </Routes>
@@ -231,5 +188,11 @@ function App() {
     </Router>
   );
 }
+
+const NavigationWrapper = () => {
+  const location = useLocation();
+  if (location.pathname === "/") return null;
+  return <Navigation />;
+};
 
 export default App;
