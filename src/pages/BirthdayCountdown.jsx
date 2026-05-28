@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import VidioCount from "../assets/videos/birthday-wish.mp4";
+import fotoCounting from "../assets/images/fotocountdown.jpg";
 
 const BirthdayCountdown = ({ isIOS }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -66,23 +66,17 @@ const BirthdayCountdown = ({ isIOS }) => {
           <span className="text-purple-600"></span>
         </h1>
 
-         <div className="mb-8">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    webkit-playsinline="true"
-                    x-webkit-airplay="allow"
-                    className="w-full max-w-md mx-auto rounded-lg shadow-xl"
-                    style={{ transform: "translateZ(0)" }}
-                  >
-                    <source src={VidioCount} type="video/mp4" />
-                  </video>
-                </div>
+        <div className="mb-8">
+          <img
+            src={fotoCounting}
+            alt="countdown"
+            className="w-full max-w-md mx-auto rounded-lg shadow-xl"
+          />
+        </div>
 
         <div className="mb-12">
-          <h2 className="text-2xl text-pink-600 mb-4">Menuju Hari Spesialmu</h2>
+          <h2 className="text-2xl text-pink-600 mb-4">
+Kita hitung mundur</h2>
           <div className="flex justify-center space-x-2 md:space-x-4">
             {Object.entries(timeLeft).map(([unit, value]) => (
               <motion.div
@@ -112,13 +106,14 @@ const BirthdayCountdown = ({ isIOS }) => {
             📅 23 Juni 2026
           </h3>
           <p className="text-pink-600">
-             23 Juni 2026 taun dimana aku kenal jala di usia 27 th ini
+             cieeeee ulang taun yaaa 😂
+Sweet seventeen bukan? sweet seventeen kan? bilaaaaang😱😳
+
           </p>
         </div>
 
         <p className="mt-6 text-lg text-pink-500 italic text-center">
-          "today and everyday, i'll always be ur #1 supporter, clap the loudest
-          for u, and praying wholeheartedly for ur well-being."
+Baca pelan pelan ya, semua yang kamu lihat dan baca murni dari 🤍ku ehee😙
         </p>
       </motion.div>
 
