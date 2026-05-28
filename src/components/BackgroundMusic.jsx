@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import laguUltah from "../assets/audio/laguultah.mp3"; // sesuaikan path jika perlu
+import laguUltah from "../assets/audio/laguultah.mp3";
 
 const BackgroundMusic = () => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(true);
@@ -8,13 +8,26 @@ const BackgroundMusic = () => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     if (isMusicPlaying) {
       audio.play().catch(() => {});
     } else {
       audio.pause();
     }
   }, [isMusicPlaying]);
+
+  // listen sinyal mute dari GiftWrapper
+  useEffect(() => {
+    const check = () => {
+      const muted = sessionStorage.getItem("muteBg") === "true";
+      setIsMusicPlaying(!muted);
+    };
+    window.addEventListener("storage", check);
+    window.addEventListener("muteBgChanged", check);
+    return () => {
+      window.removeEventListener("storage", check);
+      window.removeEventListener("muteBgChanged", check);
+    };
+  }, []);
 
   const toggleMusic = () => {
     setIsMusicPlaying((prev) => !prev);

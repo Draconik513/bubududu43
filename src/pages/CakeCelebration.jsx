@@ -178,6 +178,10 @@ const CakeCelebration = () => {
     setIsExtinguished(true);
     stopEmittingParticles();
 
+    // pastikan lagu background tetap mati, lagu celebration yang jalan
+    sessionStorage.setItem("muteBg", "true");
+    window.dispatchEvent(new Event("muteBgChanged"));
+
     setTimeout(() => {
       setShowConfetti(true);
     }, 500);

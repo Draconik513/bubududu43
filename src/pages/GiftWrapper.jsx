@@ -34,6 +34,10 @@ const GiftWrapper = () => {
       return;
     }
 
+    // matikan lagu background
+    sessionStorage.setItem("muteBg", "true");
+    window.dispatchEvent(new Event("muteBgChanged"));
+
     setIsUnwrapping(true);
     setTimeout(() => {
       setShowConfetti(true);

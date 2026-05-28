@@ -1,11 +1,32 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import confetti from "canvas-confetti";
 import vidioWishes from "../assets/images/Wishes.jpg";
 import fotoHeart from "../assets/images/fotoheart.jpg";
 
 const SpecialWishes = ({ isIOS }) => {
   const [showHeart, setShowHeart] = useState(false);
   const [showPhotoFull, setShowPhotoFull] = useState(false);
+  const [sparks, setSparks] = useState([]);
+  const confettiRef = useRef(null);
+
+  const launchEffects = () => {
+    // confetti burst
+    confetti({ particleCount: 120, spread: 100, origin: { y: 0.6 }, colors: ["#f472b6","#e879f9","#fb7185","#fbbf24","#fff"] });
+    setTimeout(() => confetti({ particleCount: 80, spread: 120, origin: { x: 0.2, y: 0.5 }, colors: ["#f472b6","#c084fc","#fff"] }), 300);
+    setTimeout(() => confetti({ particleCount: 80, spread: 120, origin: { x: 0.8, y: 0.5 }, colors: ["#fb7185","#fbbf24","#fff"] }), 500);
+    // hearts confetti
+    const heart = confetti.shapeFromText({ text: "💖", scalar: 2 });
+    confetti({ shapes: [heart], particleCount: 30, spread: 160, origin: { y: 0.4 }, scalar: 2 });
+    // sparks
+    setSparks(Array.from({ length: 18 }, (_, i) => ({ id: i, angle: (i / 18) * 360 })));
+    setTimeout(() => setSparks([]), 1200);
+  };
+
+  const handleOpen = () => {
+    setShowHeart(true);
+    launchEffects();
+  };
 
   const wishes = `
 Boleh yaaa, aku merayakan hari spesial mu ini lewat tulisan ini?
@@ -53,7 +74,7 @@ Semogaa di usia inii Jalaa tangki cintanya terisi penuh, duniamu terasaa lebih t
           <motion.button
             whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => setShowHeart(!showHeart)}
+            onClick={() => showHeart ? setShowHeart(false) : handleOpen()}
             className="relative overflow-hidden bg-pink-500 text-white px-6 py-3 rounded-full shadow-lg"
           >
             <span className="button-text">
@@ -65,33 +86,95 @@ Semogaa di usia inii Jalaa tangki cintanya terisi penuh, duniamu terasaa lebih t
         <AnimatePresence>
           {showHeart && (
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 flex items-center justify-center z-50"
             >
+              {/* background glow */}
               <motion.div
-                className="relative text-pink-500"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.9, 1, 0.9] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                style={{ background: "radial-gradient(ellipse at center, rgba(244,114,182,0.5) 0%, rgba(0,0,0,0.85) 70%)" }}
+              />
+
+              {/* cahaya rays */}
+              {[...Array(12)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute top-1/2 left-1/2 origin-left"
+                  style={{
+                    width: "50vw",
+                    height: "3px",
+                    background: "linear-gradient(to right, rgba(255,182,193,0.8), transparent)",
+                    rotate: `${i * 30}deg`,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                  }}
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: [0, 1.2, 1], opacity: [0, 0.7, 0.3] }}
+                  transition={{ duration: 0.8, delay: i * 0.05 }}
+                />
+              ))}
+
+              {/* spark burst */}
+              {sparks.map((s) => (
+                <motion.div
+                  key={s.id}
+                  className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full bg-yellow-300"
+                  initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                  animate={{
+                    x: Math.cos((s.angle * Math.PI) / 180) * 160,
+                    y: Math.sin((s.angle * Math.PI) / 180) * 160,
+                    opacity: 0,
+                    scale: 0,
+                  }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                />
+              ))}
+
+              {/* floating hearts */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute text-2xl"
+                  style={{ left: `${10 + i * 11}%`, bottom: "10%" }}
+                  initial={{ y: 0, opacity: 1 }}
+                  animate={{ y: -300, opacity: 0 }}
+                  transition={{ duration: 2 + i * 0.3, delay: i * 0.2, repeat: Infinity, repeatDelay: 1 }}
+                >
+                  {["💖","💗","💕","🌸","✨","💫","🎀","💝"][i]}
+                </motion.div>
+              ))}
+
+              {/* foto */}
+              <motion.div
+                className="relative z-10 flex flex-col items-center"
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
               >
-                <div className="text-[12rem] select-none text-center">❤️</div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold drop-shadow-lg">
-                  Jalaa💖
-                </div>
-                <div className="text-white text-lg text-center mt-4">
-                  
-My heart is only for you, honey🥹
-                </div>
-                <div className="flex justify-center mt-4">
-                  <img
-                    src={fotoHeart}
-                    alt="foto"
-                    onClick={() => setShowPhotoFull(true)}
-                    className="w-40 h-40 rounded-full object-cover border-4 border-pink-300 shadow-lg cursor-pointer"
-                  />
-                </div>
+                {/* glow ring */}
+                <motion.div
+                  className="absolute rounded-full"
+                  style={{ width: 280, height: 280, background: "radial-gradient(circle, rgba(244,114,182,0.6) 0%, transparent 70%)" }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <img
+                  src={fotoHeart}
+                  alt="foto"
+                  onClick={() => setShowPhotoFull(true)}
+                  className="w-64 h-64 rounded-full object-cover border-4 border-pink-300 shadow-2xl cursor-pointer relative z-10"
+                />
               </motion.div>
+
+              {/* close */}
+              <button
+                className="absolute top-4 right-4 z-20 text-white text-3xl font-bold"
+                onClick={() => setShowHeart(false)}
+              >✕</button>
             </motion.div>
           )}
         </AnimatePresence>
