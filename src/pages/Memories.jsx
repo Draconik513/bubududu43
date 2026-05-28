@@ -46,9 +46,36 @@ const Memories = ({ isIOS }) => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.6 }}
   >
-  Maaf yaa sayang  aku gak ada disitu pas kamu buka kadonya nanti video kan yaa pas buka kadonya atau bisa vc sama aku 🥰 jangan lupa kirim alamatnya jugaa
+    Jalaa, maaf ya kalau selama kenal aku mungkin kamu ada ilfil ilfillnya 😭 orang yang alay dan baperan 🥲
   </motion.p>
-  
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.9 }}
+  >
+    Minta maaf juga aku gak ada disitu secara langsung pas kamu baca ini.....
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 1.2 }}
+  >
+    pokoknyaa sehat selalu dan kuat terus yaa🤍
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 1.5 }}
+  >
+    Satu lagi, Semoga apa yang kita bayangin dan bahas yang baik baiknya bisa terwujudkan... aamiin...
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 1.8 }}
+  >
+    aku sayaaaaang jalaaaaaa🤗
+  </motion.p>
 </div>
 
         </motion.div>
