@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import vidioWishes from "../assets/images/wishes.jpg";
+import vidioWishes from "../assets/images/Wishes.jpg";
 import fotoHeart from "../assets/images/fotoheart.jpg";
 
 const SpecialWishes = ({ isIOS }) => {
