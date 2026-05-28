@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import vidioWishes from "../assets/videos/Wishes.mp4";
+import vidioWishes from "../assets/images/wishes.jpg";
+import fotoHeart from "../assets/images/fotoheart.jpg";
 
 const SpecialWishes = ({ isIOS }) => {
   const [showHeart, setShowHeart] = useState(false);
+  const [showPhotoFull, setShowPhotoFull] = useState(false);
 
   const wishes = `
 Boleh yaaa, aku merayakan hari spesial mu ini lewat tulisan ini?
@@ -27,18 +29,12 @@ Semogaa di usia inii Jalaa tangki cintanya terisi penuh, duniamu terasaa lebih t
         </h1>
 
         <div className="mb-8">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    webkit-playsinline="true"
-                    x-webkit-airplay="allow"
-                    className="w-full max-w-md mx-auto rounded-lg shadow-xl"
-                  >
-                    <source src={vidioWishes} type="video/mp4" />
-                  </video>
-          </div>
+          <img
+            src={vidioWishes}
+            alt="wishes"
+            className="w-full max-w-md mx-auto rounded-lg shadow-xl"
+          />
+        </div>
 
         <motion.div
           whileHover={{ scale: isIOS ? 1 : 1.01 }}
@@ -87,7 +83,47 @@ Semogaa di usia inii Jalaa tangki cintanya terisi penuh, duniamu terasaa lebih t
                   
 My heart is only for you, honey🥹
                 </div>
+                <div className="flex justify-center mt-4">
+                  <img
+                    src={fotoHeart}
+                    alt="foto"
+                    onClick={() => setShowPhotoFull(true)}
+                    className="w-40 h-40 rounded-full object-cover border-4 border-pink-300 shadow-lg cursor-pointer"
+                  />
+                </div>
               </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Fullscreen foto */}
+        <AnimatePresence>
+          {showPhotoFull && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] flex items-center justify-center"
+              onClick={() => setShowPhotoFull(false)}
+            >
+              <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+              <div className="absolute left-0 top-0 h-full w-1/4" style={{ backdropFilter: "blur(12px)", background: "rgba(0,0,0,0.3)" }} />
+              <div className="absolute right-0 top-0 h-full w-1/4" style={{ backdropFilter: "blur(12px)", background: "rgba(0,0,0,0.3)" }} />
+              <motion.img
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.7, opacity: 0 }}
+                src={fotoHeart}
+                alt="foto"
+                className="relative z-10 max-h-screen w-auto object-contain"
+                onClick={(e) => e.stopPropagation()}
+              />
+              <button
+                className="absolute top-4 right-4 z-20 text-white text-3xl font-bold"
+                onClick={() => setShowPhotoFull(false)}
+              >
+                ✕
+              </button>
             </motion.div>
           )}
         </AnimatePresence>

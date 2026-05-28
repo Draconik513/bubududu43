@@ -15,7 +15,7 @@ const Memories = ({ isIOS }) => {
         className="max-w-5xl w-full text-center"
       >
         <h1 className="text-4xl font-bold text-pink-600 mb-8">
-          Our Special Memories
+          私たちのことだけ 🤍
         </h1>
 
         <motion.div whileHover={{ scale: isIOS ? 1 : 1.02 }} className="mb-8">
@@ -61,7 +61,7 @@ const Memories = ({ isIOS }) => {
           style={{ WebkitTapHighlightColor: "transparent" }}
         >
           <span className="button-text">
-            {flowerBloom ? "Tutup Bunga" : "Buka Bunga Cinta"}
+            {flowerBloom ? "Close Picture" : "Picture about us"}
           </span>
         </motion.button>
 
