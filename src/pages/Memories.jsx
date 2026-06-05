@@ -254,7 +254,7 @@ const Memories = ({ isIOS }) => {
                 <motion.div
                   className="absolute rounded-full pointer-events-none"
                   style={{
-                    width: 340, height: 340,
+                    width: "92vmin", height: "92vmin",
                     background: "conic-gradient(from 0deg, rgba(244,114,182,0.5), rgba(251,207,232,0.2), rgba(217,70,239,0.5), rgba(244,114,182,0.5))",
                     borderRadius: "50%",
                   }}
@@ -265,7 +265,7 @@ const Memories = ({ isIOS }) => {
                 {/* ring berdetak */}
                 <motion.div
                   className="absolute rounded-full border-2 border-pink-400 pointer-events-none"
-                  style={{ width: 310, height: 310 }}
+                  style={{ width: "86vmin", height: "86vmin" }}
                   animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
@@ -274,13 +274,16 @@ const Memories = ({ isIOS }) => {
                 <motion.img
                   src={fotoBunga}
                   alt="Bunga"
-                  className="w-72 h-72 object-cover rounded-full border-4 border-rose-300 shadow-2xl"
+                  className="object-cover rounded-full border-4 border-rose-300 shadow-2xl"
+                  style={{
+                    width: "60vmin", height: "60vmin",
+                    filter: "drop-shadow(0 0 30px rgba(244,114,182,0.9)) brightness(1.08) saturate(1.2)"
+                  }}
                   animate={{
                     scale: [1, 1.04, 1],
                     rotate: [-2, 2, -2],
                   }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ filter: "drop-shadow(0 0 30px rgba(244,114,182,0.9)) brightness(1.08) saturate(1.2)" }}
                 />
 
                 {/* sparkle pojok */}
