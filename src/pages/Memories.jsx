@@ -199,7 +199,7 @@ const Memories = ({ isIOS }) => {
                 className="absolute inset-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                style={{ background: "radial-gradient(ellipse at center, rgba(159,18,57,0.85) 0%, rgba(15,0,10,0.97) 100%)" }}
+                style={{ background: "radial-gradient(ellipse at center, rgba(244,114,182,0.5) 0%, rgba(0,0,0,0.85) 70%)" }}
               />
 
               {/* cahaya rays berputar */}
