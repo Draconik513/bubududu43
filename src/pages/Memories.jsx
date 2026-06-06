@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import vidioBunga from "../assets/videos/vidioBungadudu.mp4";
+import fotoAtas from "../assets/images/atas.jpg";
 import fotoKenangan from "../assets/images/couple.jpg";
 import fotoBunga from "../assets/images/bunga.jpg";
 
@@ -101,20 +101,18 @@ const Memories = ({ isIOS }) => {
             transition={{ duration: 1 }}
             className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8"
           >
-            {/* Video bubble */}
+            {/* Foto atas */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
             >
-              <video
-                autoPlay loop muted playsInline
-                webkit-playsinline="true"
+              <img
+                src={fotoAtas}
+                alt="atas"
                 className="w-72 h-72 object-cover"
-              >
-                <source src={vidioBunga} type="video/mp4" />
-              </video>
+              />
             </motion.div>
 
             {/* Bunga dari gambar dengan animasi keren */}
@@ -179,8 +177,7 @@ const Memories = ({ isIOS }) => {
             transition={{ delay: 2.2 }}
             className="text-center text-pink-600 mt-6 italic text-lg"
           >
-            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong
-            diterima ya 🥺❤️
+            🌸 bunga ini , gak perlu aku jelasin lagi yaah 😂 udah ku spill dan bahas di chat hehe..... tolong di terimaaa yaa sayaang🥰
           </motion.p>
         )}
 
