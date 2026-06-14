@@ -40,43 +40,61 @@ const Memories = ({ isIOS }) => {
 </h2>
 
 <div className="text-left text-pink-800 space-y-4 leading-relaxed">
-  <p>
-    💌 <strong>Maaf ya, Sayang...</strong>
-  </p>
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.6 }}
   >
-    Jalaa, maaf ya kalau selama kenal aku mungkin kamu ada ilfil ilfillnya 😭 orang yang alay dan baperan 🥲
+    Di hari yang seindah ini...
   </motion.p>
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.9 }}
   >
-    Minta maaf juga aku gak ada disitu secara langsung pas kamu baca ini.....
+    Maafkan tanganku yang belum bisa menggenggammu dan raga yang belum bisa memelukmu....
   </motion.p>
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 1.2 }}
   >
-    pokoknyaa sehat selalu dan kuat terus yaa🤍
+    Maafkan aku yang hadir hanya dalam bentuk doa bukan pelukan.....
   </motion.p>
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 1.5 }}
   >
-    Satu lagi, Semoga apa yang kita bayangin dan bahas yang baik baiknya bisa terwujudkan... aamiin...
+    yang harus kamu tau, aku slalu rinduuuuuu 🥺
   </motion.p>
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 1.8 }}
   >
-    aku sayaaaaang jalaaaaaa🤗
+    tapi semogaaa semua itu cepat berlalu....
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 2.1 }}
+  >
+    agar rindunya terobati 🥲
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 2.4 }}
+  >
+    satu lagiii Semangaaat Buat ujiannya yaaa sayaang 🤗 Semogaaa di permudah di lancarkan semuanya aamiin.....
+  </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 2.7 }}
+  >
+    Aku sayang jalaaa🤍
   </motion.p>
 </div>
 

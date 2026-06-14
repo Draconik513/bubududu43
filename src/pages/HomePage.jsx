@@ -55,11 +55,13 @@ const HomePage = ({ isIOS }) => {
           <h2 className="text-3xl font-bold text-pink-600">
             Selamat Ulang Tahun Sayang!
           </h2>
-          <p className="text-xl text-pink-600">🎉 23 Juni 2026 🎉</p>
+          <p className="text-xl text-pink-600">🎉 22 Juni 2026  🎉</p>
 
           <div className="mt-8 p-4 bg-white/80 backdrop-blur-sm rounded-lg max-w-md mx-auto border border-pink-200">
             <p className="text-pink-800 italic">
-              "Karena kita Jauh sementaraa aku kasih ini dulu bentuk fisiknya kamu kirim alamat yaa alamat yang di indo karna kalau ke jepang ongkosnya mahal 😂 alamatnya kirim lewat chat semoga Jalaa happy yaa biar aku ikutan happy juga 🥰"
+              "Karena kita Masih jauh gapapa yaa dalam bentuk virtual dulu huhu 🥹
+kadonya otw jepang ditungguin yaa sayaaaang
+Semoga Jala happy yaaa biar aku ikutan happy juga 😁🥰🫶🤗😍"
             </p>
             <p className="mt-4 text-right text-pink-600 font-medium">- Mahaa </p>
           </div>

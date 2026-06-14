@@ -14,7 +14,7 @@ const PasswordPage = ({ isIOS }) => {
     setError(false);
 
     if (newInput.length === 4) {
-      if (newInput === "2306") {
+      if (newInput === "2206") {
         sessionStorage.setItem("unlocked", "true");
         setTimeout(() => navigate("/countdown"), 300);
       } else {
